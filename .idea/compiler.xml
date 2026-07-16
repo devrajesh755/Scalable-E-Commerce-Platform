@@ -3,15 +3,16 @@
   <component name="CompilerConfiguration">
     <annotationProcessing>
       <profile default="true" name="Default" enabled="true" />
-      <profile name="Annotation profile for user" enabled="true">
+      <profile name="Annotation profile for storeServices" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="false">
           <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.46/lombok-1.18.46.jar" />
         </processorPath>
-        <module name="user" />
+        <module name="storeServices" />
         <module name="product" />
+        <module name="user" />
         <module name="order" />
       </profile>
     </annotationProcessing>
@@ -20,6 +21,7 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="order" options="-parameters" />
       <module name="product" options="-parameters" />
+      <module name="storeServices" options="-parameters" />
       <module name="user" options="-parameters" />
     </option>
   </component>
