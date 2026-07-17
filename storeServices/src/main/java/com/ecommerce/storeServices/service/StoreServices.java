@@ -10,6 +10,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @AllArgsConstructor
@@ -66,17 +67,15 @@ public class StoreServices
         return  null;
     }
 
-    public List<StoreResponse> SearchStoreByName(String storeName)
+    public StoreResponse SearchStoreByName(String storeName)
     {
-        List<Store> storeList = iStoreRepository.findByStoreName(storeName);
+       Store store = iStoreRepository.findByStoreName(storeName);
 
-        if(storeList.isEmpty())
+        if(store == null)
         {
             return null;
         }
-        return storeList.stream()
-                .map(this::mapToStoreResponse)
-                .toList();
+        return mapToStoreResponse(store);
 
     }
 

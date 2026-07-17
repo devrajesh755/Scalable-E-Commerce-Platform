@@ -56,10 +56,10 @@ public class StoreController {
     @GetMapping("/searchStoreByName/{storeName}")
     public ResponseEntity<?>  searchStoreByName(@PathVariable String storeName)
     {
-       List<StoreResponse> storeResponseList = storeServices.SearchStoreByName(storeName);
-       if(storeResponseList.isEmpty())
+       StoreResponse storeResponse = storeServices.SearchStoreByName(storeName);
+       if(storeResponse == null)
            return new ResponseEntity<String>("Store Not Found",HttpStatus.BAD_REQUEST);
-       return new ResponseEntity<List<StoreResponse>>(storeResponseList,HttpStatus.OK);
+       return new ResponseEntity<StoreResponse>(storeResponse,HttpStatus.OK);
     }
 
     @DeleteMapping("/deleteStore/{AadhaarId}")

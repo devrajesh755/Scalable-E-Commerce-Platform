@@ -8,6 +8,8 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Data
 @Entity
@@ -22,8 +24,9 @@ public class Store {
     @Column(name = "AadhaarId",nullable = false,unique = true)
     private String aadhaarId;
 
-    @Column(name = "store_name",nullable = false)
+    @Column(name = "store_name",nullable = false,unique = true)
     private String storeName;
+
     @Column(name = "description")
     private String description;
 
@@ -41,6 +44,14 @@ public class Store {
     @UpdateTimestamp
     @Column(name = "updated_at",nullable = false)
     private LocalDateTime updateAt;
+
+    @OneToMany(
+            mappedBy = "store",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true,
+            fetch = FetchType.LAZY
+    )
+    private List<StoreProduct> products = new ArrayList<>();
 
 
 }

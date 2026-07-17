@@ -4,7 +4,6 @@ import com.ecommerce.storeServices.model.Store;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import java.util.List;
 
 
 public interface IStoreRepository extends JpaRepository<Store,Long>{
@@ -14,5 +13,5 @@ public interface IStoreRepository extends JpaRepository<Store,Long>{
 
     void deleteByAadhaarId(String aadhaarId);
 
-    List<Store> findByStoreName(String storeName);
+    Store findByStoreName(String storeName);
 }
