@@ -1,0 +1,27 @@
+server:
+  port: 8888
+spring:
+  application:
+    name: configserver
+
+  cloud:
+    config:
+      server:
+        git:
+          uri: ${GITHUB_REPOURL}
+          username: ${GITHUB_USERNAME}
+          password: ${GITHUB_ACCESS_TOKEN}
+
+
+#  rabbitmq:
+#    host: localhost
+#    port: 5672
+#    username: guest
+#    password: guest
+#
+#management:
+#  endpoints:
+#    web:
+#      exposure:
+#        include: "*"
+

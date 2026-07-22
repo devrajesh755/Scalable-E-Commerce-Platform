@@ -1,0 +1,10 @@
+build:
+  id: 130256
+  version: 1.2.3.6.5
+  name: "This Is Inside Dev Enverment"
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
