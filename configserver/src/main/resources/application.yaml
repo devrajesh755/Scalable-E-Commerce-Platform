@@ -2,7 +2,7 @@ server:
   port: 8888
 spring:
   application:
-    name: configserver
+    name: config-server
 
   cloud:
     config:
@@ -12,16 +12,29 @@ spring:
           username: ${GITHUB_USERNAME}
           password: ${GITHUB_ACCESS_TOKEN}
 
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
 
-#  rabbitmq:
-#    host: localhost
-#    port: 5672
-#    username: guest
-#    password: guest
-#
-#management:
-#  endpoints:
-#    web:
-#      exposure:
-#        include: "*"
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    shutdown:
+      access: unrestricted
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+    register-with-eureka: true
+    fetch-registry: true
+
+
+
 

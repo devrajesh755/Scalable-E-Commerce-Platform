@@ -1,3 +1,10 @@
 spring:
   application:
     name: storeServices
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+

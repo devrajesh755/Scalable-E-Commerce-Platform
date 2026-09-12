@@ -76,6 +76,13 @@ public class ProductServices {
         product.setImageUrl(productRequest.getImageUrl());
     }
 
+
+    public Optional<ProductResponse> productExitById(String id){
+       return  productRepository.findByIdAndActiveTrue(Long.valueOf(id)).
+                  map(this::mapToProductResponse);
+
+    }
+
     private ProductResponse mapToProductResponse(Product product) {
 
         ProductResponse productResponse = new ProductResponse();
@@ -97,4 +104,6 @@ public class ProductServices {
                                  .map(this::mapToProductResponse)
                                   .collect(Collectors.toList());
     }
+
+
 }

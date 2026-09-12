@@ -36,14 +36,14 @@ public class ProductController {
         return new ResponseEntity<List<ProductResponse>>(productServices.getAllProduct(),HttpStatus.OK);
     }
 
-    @GetMapping("/getProductById/{id}")
-    public ResponseEntity<?> getProductById(@PathVariable  Long id)
-    {
-       ProductResponse productResponse = productServices.getProductDetails(id);
-       if(productResponse!=null)
-           return new ResponseEntity<ProductResponse>(productResponse,HttpStatus.OK);
-        return new ResponseEntity<String>("Product With Id "+id+" Dose Not Exist",HttpStatus.BAD_REQUEST);
-    }
+//    @GetMapping("/getProductById/{id}")
+//    public ResponseEntity<?> getProductById(@PathVariable  Long id)
+//    {
+//       ProductResponse productResponse = productServices.getProductDetails(id);
+//       if(productResponse!=null)
+//           return new ResponseEntity<ProductResponse>(productResponse,HttpStatus.OK);
+//        return new ResponseEntity<String>("Product With Id "+id+" Dose Not Exist",HttpStatus.BAD_REQUEST);
+//    }
 
 
     @PutMapping("/updateProduct/{id}")
@@ -73,5 +73,15 @@ public class ProductController {
     {
         return ResponseEntity.ok(productServices.searchProduct(keyword));
     }
+
+    @GetMapping("/getProductById/{id}")
+    public ResponseEntity<ProductResponse> getProductById(@PathVariable  String id)
+    {
+        return productServices.productExitById(id)
+                .map(ResponseEntity::ok)
+                .orElseGet(()->ResponseEntity.notFound().build());
+    }
+
+
 
 }

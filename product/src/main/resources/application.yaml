@@ -1,16 +1,7 @@
 spring:
   application:
     name: product-services
-  datasource:
-    url: jdbc:postgresql://localhost:5432/ecomm_product_db
-    username: postgres
-    password: postgres
-  jpa:
-    show-sql: true
-    hibernate:
-      ddl-auto: create
-    properties:
-      hibernate:
-        dialect: org.hibernate.dialect.PostgreSQLDialect
-server:
-  port: 8081
+  config:
+    import: configserver:${CONFIG_SERVER_URL}
+
+

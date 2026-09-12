@@ -7,8 +7,6 @@ import com.ecommerce.user.dto.UserResponse;
 import com.ecommerce.user.model.Address;
 import com.ecommerce.user.model.User;
 import com.ecommerce.user.repository.UserRepository;
-import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,11 +14,14 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
-@RequiredArgsConstructor
 public class UserService {
 
-    @Autowired
-    private UserRepository repository;
+
+    private final UserRepository repository;
+
+    private UserService(UserRepository repository){
+        this.repository = repository;
+    }
 
 
 
